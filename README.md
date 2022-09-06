@@ -1,2 +1,2 @@
 # CPS-for-Distributed-Control---Study-case
-A repository for code used in the paper #7045 from IEEE Latin America Transactions.
+An IEC 61499-based model for CPSs to distribute the complexity of control software over numerous small devices. A packet sorting system is implemented in a commercial IDE platform.
