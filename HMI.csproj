@@ -1,0 +1,346 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{5B58E6C9-4EC6-4491-B2DD-E3D54DA07C5C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HMI</RootNamespace>
+    <AssemblyName>HMI</AssemblyName>
+    <NxtVersion>3.0.0.0</NxtVersion>
+    <HMILibraries>HMIBaseSymbols:</HMILibraries>
+    <Theme>Default:Default</Theme>
+    <ProjectType>HMI</ProjectType>
+    <Platform Condition=" '$(Platform)' == '' ">Windows</Platform>
+    <CanvasSize>1280,900,1280,980,Default,True,140,30</CanvasSize>
+    <CanvasLookAndFeel>Theme</CanvasLookAndFeel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\$(Platform)\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\$(Platform)\Release</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Windows' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Canvas.cnv.cs">
+      <Canvas>true</Canvas>
+    </Compile>
+    <Compile Include="Canvas.cnv.Designer.cs">
+      <DependentUpon>Canvas.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Colors\ProjectColors.cs" />
+    <Compile Include="Colors\ProjectDrawingObjects.cs" />
+    <Compile Include="CylinderHSens\CylinderHSens.def.cs" />
+    <Compile Include="CylinderHSens\CylinderHSens.event.cs" />
+    <Compile Include="CylinderHSens\CylinderHSens_sDefault.cnv.cs" />
+    <Compile Include="CylinderHSens\CylinderHSens_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderHSens_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderHSens_Inverse\CylinderHSens_Inverse.def.cs" />
+    <Compile Include="CylinderHSens_Inverse\CylinderHSens_Inverse.event.cs" />
+    <Compile Include="CylinderHSens_Inverse\CylinderHSens_Inverse_sDefault.cnv.cs" />
+    <Compile Include="CylinderHSens_Inverse\CylinderHSens_Inverse_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderHSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderH\CylinderH.def.cs" />
+    <Compile Include="CylinderH\CylinderH.event.cs" />
+    <Compile Include="CylinderH\CylinderH_sDefault.cnv.cs" />
+    <Compile Include="CylinderH\CylinderH_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderH_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderH_Inverse\CylinderH_Inverse.def.cs" />
+    <Compile Include="CylinderH_Inverse\CylinderH_Inverse.event.cs" />
+    <Compile Include="CylinderH_Inverse\CylinderH_Inverse_sDefault.cnv.cs" />
+    <Compile Include="CylinderH_Inverse\CylinderH_Inverse_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderH_Inverse_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderH_I\CylinderH_I.def.cs" />
+    <Compile Include="CylinderH_I\CylinderH_I.event.cs" />
+    <Compile Include="CylinderH_I\CylinderH_I_sDefault.cnv.cs" />
+    <Compile Include="CylinderH_I\CylinderH_I_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderH_I_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderH_N\CylinderH_N.def.cs" />
+    <Compile Include="CylinderH_N\CylinderH_N.event.cs" />
+    <Compile Include="CylinderH_N\CylinderH_N_sDefault.cnv.cs" />
+    <Compile Include="CylinderH_N\CylinderH_N_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderH_N_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderVSensValve\CylinderVSensValve.def.cs" />
+    <Compile Include="CylinderVSensValve\CylinderVSensValve.event.cs" />
+    <Compile Include="CylinderVSensValve\CylinderVSensValve_sDefault.cnv.cs" />
+    <Compile Include="CylinderVSensValve\CylinderVSensValve_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderVSensValve_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderVSens\CylinderVSens.def.cs" />
+    <Compile Include="CylinderVSens\CylinderVSens.event.cs" />
+    <Compile Include="CylinderVSens\CylinderVSens_sDefault.cnv.cs" />
+    <Compile Include="CylinderVSens\CylinderVSens_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderVSens_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderVSens_Inverse\CylinderVSens_Inverse.def.cs" />
+    <Compile Include="CylinderVSens_Inverse\CylinderVSens_Inverse.event.cs" />
+    <Compile Include="CylinderVSens_Inverse\CylinderVSens_Inverse_sDefault.cnv.cs" />
+    <Compile Include="CylinderVSens_Inverse\CylinderVSens_Inverse_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderVSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderV\CylinderV.def.cs" />
+    <Compile Include="CylinderV\CylinderV.event.cs" />
+    <Compile Include="CylinderV\CylinderV_sDefault.cnv.cs" />
+    <Compile Include="CylinderV\CylinderV_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderV_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderV_Inverse\CylinderV_Inverse.def.cs" />
+    <Compile Include="CylinderV_Inverse\CylinderV_Inverse.event.cs" />
+    <Compile Include="CylinderV_Inverse\CylinderV_Inverse_sDefault.cnv.cs" />
+    <Compile Include="CylinderV_Inverse\CylinderV_Inverse_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderV_Inverse_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CylinderV_I\CylinderV_I.def.cs" />
+    <Compile Include="CylinderV_I\CylinderV_I.event.cs" />
+    <Compile Include="CylinderV_I\CylinderV_I_sDefault.cnv.cs" />
+    <Compile Include="CylinderV_I\CylinderV_I_sDefault.cnv.Designer.cs">
+      <DependentUpon>CylinderV_I_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cyl_Sens\Cyl_Sens.def.cs" />
+    <Compile Include="Cyl_Sens\Cyl_Sens.event.cs" />
+    <Compile Include="Cyl_Sens\Cyl_Sens_sDefault.cnv.cs" />
+    <Compile Include="Cyl_Sens\Cyl_Sens_sDefault.cnv.Designer.cs">
+      <DependentUpon>Cyl_Sens_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loc_Sens\Loc_Sens.def.cs" />
+    <Compile Include="Loc_Sens\Loc_Sens.event.cs" />
+    <Compile Include="Loc_Sens\Loc_Sens_sDefault.cnv.cs" />
+    <Compile Include="Loc_Sens\Loc_Sens_sDefault.cnv.Designer.cs">
+      <DependentUpon>Loc_Sens_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manual_Control\Manual_Control.def.cs" />
+    <Compile Include="Manual_Control\Manual_Control.event.cs" />
+    <Compile Include="Manual_Control\Manual_Control_sDefault.cnv.cs" />
+    <Compile Include="Manual_Control\Manual_Control_sDefault.cnv.Designer.cs">
+      <DependentUpon>Manual_Control_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOrF_Sens\NOrF_Sens.def.cs" />
+    <Compile Include="NOrF_Sens\NOrF_Sens.event.cs" />
+    <Compile Include="NOrF_Sens\NOrF_Sens_sDefault.cnv.cs" />
+    <Compile Include="NOrF_Sens\NOrF_Sens_sDefault.cnv.Designer.cs">
+      <DependentUpon>NOrF_Sens_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackageIn_Pos\PackageIn_Pos.def.cs" />
+    <Compile Include="PackageIn_Pos\PackageIn_Pos.event.cs" />
+    <Compile Include="PackageIn_Pos\PackageIn_Pos_sDefault.cnv.cs" />
+    <Compile Include="PackageIn_Pos\PackageIn_Pos_sDefault.cnv.Designer.cs">
+      <DependentUpon>PackageIn_Pos_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package_Pos\Package_Pos.def.cs" />
+    <Compile Include="Package_Pos\Package_Pos.event.cs" />
+    <Compile Include="Package_Pos\Package_Pos_sDefault.cnv.cs" />
+    <Compile Include="Package_Pos\Package_Pos_sDefault.cnv.Designer.cs">
+      <DependentUpon>Package_Pos_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartCanvas_3.cnv.cs" />
+    <Compile Include="StartCanvas_3.cnv.Designer.cs">
+      <DependentUpon>StartCanvas_3.cnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System_Model\System_Model.def.cs" />
+    <Compile Include="System_Model\System_Model.event.cs" />
+    <Compile Include="System_Model\System_Model_sDefault.cnv.cs" />
+    <Compile Include="System_Model\System_Model_sDefault.cnv.Designer.cs">
+      <DependentUpon>System_Model_sDefault.cnv.cs</DependentUpon>
+    </Compile>
+    <None Include="Alarms\AlarmClasses.xml" />
+    <None Include="Colors\Default.color.theme" />
+    <None Include="Colors\Default.do.theme" />
+    <None Include="Colors\ProjectColors.xml" />
+    <None Include="Colors\ProjectDrawingObjects.xml" />
+    <None Include="CylinderHSens\CylinderHSens.Design.resx" />
+    <None Include="CylinderHSens_Inverse\CylinderHSens_Inverse.Design.resx" />
+    <None Include="CylinderH\CylinderH.Design.resx" />
+    <None Include="CylinderH_Inverse\CylinderH_Inverse.Design.resx" />
+    <None Include="CylinderH_I\CylinderH_I.Design.resx" />
+    <None Include="CylinderH_N\CylinderH_N.Design.resx" />
+    <None Include="CylinderVSensValve\CylinderVSensValve.Design.resx" />
+    <None Include="CylinderVSens\CylinderVSens.Design.resx" />
+    <None Include="CylinderVSens_Inverse\CylinderVSens_Inverse.Design.resx" />
+    <None Include="CylinderV\CylinderV.Design.resx" />
+    <None Include="CylinderV_Inverse\CylinderV_Inverse.Design.resx" />
+    <None Include="CylinderV_I\CylinderV_I.Design.resx" />
+    <None Include="Cyl_Sens\Cyl_Sens.Design.resx" />
+    <None Include="ImageStorage\ImageStorage.xml" />
+    <None Include="Loc_Sens\Loc_Sens.Design.resx" />
+    <None Include="Manual_Control\Manual_Control.Design.resx" />
+    <None Include="NOrF_Sens\NOrF_Sens.Design.resx" />
+    <None Include="PackageIn_Pos\PackageIn_Pos.Design.resx" />
+    <None Include="Package_Pos\Package_Pos.Design.resx" />
+    <None Include="System_Model\System_Model.Design.resx" />
+    <EmbeddedResource Include="Alarms\AlarmClasses.xml" />
+    <EmbeddedResource Include="Alarms\SystemAlarmClasses.xml" />
+    <EmbeddedResource Include="Canvas.cnv.resx">
+      <DependentUpon>Canvas.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configurations\HistoryTrend.xml" />
+    <EmbeddedResource Include="Configurations\Journalling.xml" />
+    <EmbeddedResource Include="Configurations\TagValueEditor.xml" />
+    <EmbeddedResource Include="CylinderHSens\CylinderHSens_sDefault.cnv.resx">
+      <DependentUpon>CylinderHSens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderHSens\CylinderHSens_sDefault.cnv.xml">
+      <DependentUpon>CylinderHSens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderHSens_Inverse\CylinderHSens_Inverse_sDefault.cnv.resx">
+      <DependentUpon>CylinderHSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderHSens_Inverse\CylinderHSens_Inverse_sDefault.cnv.xml">
+      <DependentUpon>CylinderHSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH\CylinderH_sDefault.cnv.resx">
+      <DependentUpon>CylinderH_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH\CylinderH_sDefault.cnv.xml">
+      <DependentUpon>CylinderH_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_Inverse\CylinderH_Inverse_sDefault.cnv.resx">
+      <DependentUpon>CylinderH_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_Inverse\CylinderH_Inverse_sDefault.cnv.xml">
+      <DependentUpon>CylinderH_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_I\CylinderH_I_sDefault.cnv.resx">
+      <DependentUpon>CylinderH_I_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_I\CylinderH_I_sDefault.cnv.xml">
+      <DependentUpon>CylinderH_I_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_N\CylinderH_N_sDefault.cnv.resx">
+      <DependentUpon>CylinderH_N_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderH_N\CylinderH_N_sDefault.cnv.xml">
+      <DependentUpon>CylinderH_N_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSensValve\CylinderVSensValve_sDefault.cnv.resx">
+      <DependentUpon>CylinderVSensValve_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSensValve\CylinderVSensValve_sDefault.cnv.xml">
+      <DependentUpon>CylinderVSensValve_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSens\CylinderVSens_sDefault.cnv.resx">
+      <DependentUpon>CylinderVSens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSens\CylinderVSens_sDefault.cnv.xml">
+      <DependentUpon>CylinderVSens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSens_Inverse\CylinderVSens_Inverse_sDefault.cnv.resx">
+      <DependentUpon>CylinderVSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderVSens_Inverse\CylinderVSens_Inverse_sDefault.cnv.xml">
+      <DependentUpon>CylinderVSens_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV\CylinderV_sDefault.cnv.resx">
+      <DependentUpon>CylinderV_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV\CylinderV_sDefault.cnv.xml">
+      <DependentUpon>CylinderV_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV_Inverse\CylinderV_Inverse_sDefault.cnv.resx">
+      <DependentUpon>CylinderV_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV_Inverse\CylinderV_Inverse_sDefault.cnv.xml">
+      <DependentUpon>CylinderV_Inverse_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV_I\CylinderV_I_sDefault.cnv.resx">
+      <DependentUpon>CylinderV_I_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CylinderV_I\CylinderV_I_sDefault.cnv.xml">
+      <DependentUpon>CylinderV_I_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cyl_Sens\Cyl_Sens_sDefault.cnv.resx">
+      <DependentUpon>Cyl_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cyl_Sens\Cyl_Sens_sDefault.cnv.xml">
+      <DependentUpon>Cyl_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loc_Sens\Loc_Sens_sDefault.cnv.resx">
+      <DependentUpon>Loc_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loc_Sens\Loc_Sens_sDefault.cnv.xml">
+      <DependentUpon>Loc_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manual_Control\Manual_Control_sDefault.cnv.resx">
+      <DependentUpon>Manual_Control_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manual_Control\Manual_Control_sDefault.cnv.xml">
+      <DependentUpon>Manual_Control_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOrF_Sens\NOrF_Sens_sDefault.cnv.resx">
+      <DependentUpon>NOrF_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOrF_Sens\NOrF_Sens_sDefault.cnv.xml">
+      <DependentUpon>NOrF_Sens_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageIn_Pos\PackageIn_Pos_sDefault.cnv.resx">
+      <DependentUpon>PackageIn_Pos_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageIn_Pos\PackageIn_Pos_sDefault.cnv.xml">
+      <DependentUpon>PackageIn_Pos_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package_Pos\Package_Pos_sDefault.cnv.resx">
+      <DependentUpon>Package_Pos_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package_Pos\Package_Pos_sDefault.cnv.xml">
+      <DependentUpon>Package_Pos_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartCanvas_3.cnv.resx">
+      <DependentUpon>StartCanvas_3.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System_Model\System_Model_sDefault.cnv.resx">
+      <DependentUpon>System_Model_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System_Model\System_Model_sDefault.cnv.xml">
+      <DependentUpon>System_Model_sDefault.cnv.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CommunicationProfile">
+      <HintPath>CommunicationProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="HMIBaseSymbols">
+      <HintPath>HMIBaseSymbols.dll</HintPath>
+    </Reference>
+    <Reference Include="NxtControl.ComponentModel">
+      <HintPath>NxtControl.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="nxtControl.DCSmini.HMI">
+      <Version>3.0.0.2</Version>
+      <HintPath>nxtControl.DCSmini.HMI.dll</HintPath>
+    </Reference>
+    <Reference Include="NxtControl.GuiFramework">
+      <HintPath>NxtControl.GuiFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(SharpDevelopBinPath)\SharpDevelop.Build.CSharp.targets" />
+</Project>
