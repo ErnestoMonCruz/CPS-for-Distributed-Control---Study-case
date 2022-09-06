@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="767E7B75FE100D9C" Name="NationalCylinderControl" Comment="Basic Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="0" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="e_net" Date="12/9/2021" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="NationalRetracted" />
+        <With Var="NationalExtended" />
+        <With Var="PackInNational" />
+        <With Var="NationalPackOut" />
+        <With Var="ForeignPackOut" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="NationalRetracted" />
+        <With Var="NationalExtended" />
+        <With Var="PackInNational" />
+        <With Var="NationalPackOut" />
+        <With Var="ForeignPackOut" />
+      </Event>
+      <Event Name="LOCAL" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm">
+        <With Var="NationalPush" />
+        <With Var="NationalRetract" />
+      </Event>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="NationalPush" />
+        <With Var="NationalRetract" />
+      </Event>
+      <Event Name="NATIONAL" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="NationalRetracted" Type="BOOL" />
+      <VarDeclaration Name="NationalExtended" Type="BOOL" />
+      <VarDeclaration Name="PackInNational" Type="BOOL" />
+      <VarDeclaration Name="NationalPackOut" Type="BOOL" />
+      <VarDeclaration Name="ForeignPackOut" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="NationalPush" Type="BOOL" />
+      <VarDeclaration Name="NationalRetract" Type="BOOL" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="INIT,INITIAL,PUSH_N,RETR_N" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="724.9409" y="556.4117" />
+      <ECState Name="INIT" Comment="Initialization" x="725.5301" y="965.6766">
+        <ECAction Algorithm="INIT" Output="INITO" />
+      </ECState>
+      <ECState Name="INITIAL" x="1992.5" y="721.5001">
+        <ECAction Algorithm="INITIAL" Output="CNF" />
+      </ECState>
+      <ECState Name="PUSH_NATIONAL" x="2528" y="1448">
+        <ECAction Algorithm="PUSH_N" Output="CNF" />
+      </ECState>
+      <ECState Name="RETR_NATIONAL" x="1329.5" y="1474">
+        <ECAction Algorithm="RETR_N" Output="CNF" />
+        <ECAction Output="NATIONAL" />
+      </ECState>
+      <ECState Name="NATIONAL" x="2977" y="795.0001" />
+      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="671.4038" y="742.9925">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="165.1221,172.0636,165.3646,196.424" />
+      </ECTransition>
+      <ECTransition Source="INIT" Destination="INITIAL" Condition="REQ AND NationalRetracted " x="1269.545" y="609.8381">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="262.2942,146.0404,364.9102,128.56" />
+      </ECTransition>
+      <ECTransition Source="RETR_NATIONAL" Destination="INITIAL" Condition="REQ AND NationalRetracted AND (NationalPackOut OR ForeignPackOut)" x="1484.969" y="982.6652">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="328.125,274.375,396.25,200" />
+      </ECTransition>
+      <ECTransition Source="NATIONAL" Destination="PUSH_NATIONAL" Condition="REQ AND PackInNational" x="2898.618" y="1088.108">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="746.7408,240.3637,720.625,298.125" />
+      </ECTransition>
+      <ECTransition Source="PUSH_NATIONAL" Destination="RETR_NATIONAL" Condition="REQ AND NationalExtended" x="1803.34" y="1709.654">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="498.125,454.375,385.3828,433.197" />
+      </ECTransition>
+      <ECTransition Source="INITIAL" Destination="NATIONAL" Condition="LOCAL" x="2545.759" y="592.6222">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="614.375,133.125,664.3212,144.2785" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="INIT" Comment="Initialization algorithm">
+      <ST Text="NationalPush:= FALSE;&#xD;&#xA;NationalRetract:= TRUE;" />
+    </Algorithm>
+    <Algorithm Name="INITIAL">
+      <ST Text="NationalRetract:=FALSE;" />
+    </Algorithm>
+    <Algorithm Name="PUSH_N">
+      <ST Text="NationalPush:=TRUE;" />
+    </Algorithm>
+    <Algorithm Name="RETR_N">
+      <ST Text="NationalPush:=FALSE;&#xD;&#xA;NationalRetract:=TRUE;" />
+    </Algorithm>
+  </BasicFB>
+</FBType>

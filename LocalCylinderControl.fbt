@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="A14DC5F32F6462A3" Name="LocalCylinderControl" Comment="Basic Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="0" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="e_net" Date="12/9/2021" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="LocalRetracted" />
+        <With Var="LocalExtended" />
+        <With Var="PackInLocal" />
+        <With Var="LocalPackOut" />
+        <With Var="NationalPackOut" />
+        <With Var="ForeignPackOut" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="LocalRetracted" />
+        <With Var="LocalExtended" />
+        <With Var="PackInLocal" />
+        <With Var="LocalPackOut" />
+        <With Var="NationalPackOut" />
+        <With Var="ForeignPackOut" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm">
+        <With Var="LocalPush" />
+        <With Var="LocalRetract" />
+      </Event>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="LocalPush" />
+        <With Var="LocalRetract" />
+      </Event>
+      <Event Name="LOCAL" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="LocalRetracted" Type="BOOL" Comment="Input event qualifier" />
+      <VarDeclaration Name="LocalExtended" Type="BOOL" />
+      <VarDeclaration Name="PackInLocal" Type="BOOL" />
+      <VarDeclaration Name="LocalPackOut" Type="BOOL" />
+      <VarDeclaration Name="NationalPackOut" Type="BOOL" />
+      <VarDeclaration Name="ForeignPackOut" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="LocalPush" Type="BOOL" Comment="Output event qualifier" />
+      <VarDeclaration Name="LocalRetract" Type="BOOL" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="INIT,INITIAL,PUSH_L,RETR_L" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="2072.052" y="364.9673" />
+      <ECState Name="INIT" Comment="Initialization" x="2038.363" y="940.121">
+        <ECAction Algorithm="INIT" Output="INITO" />
+      </ECState>
+      <ECState Name="INITIAL" x="2681.278" y="821.5001">
+        <ECAction Algorithm="INITIAL" Output="CNF" />
+      </ECState>
+      <ECState Name="PUSH_LOCAL" x="3576.778" y="480.0557">
+        <ECAction Algorithm="PUSH_L" Output="CNF" />
+      </ECState>
+      <ECState Name="RETR_LOCAL" x="3598.111" y="1201.722">
+        <ECAction Algorithm="RETR_L" Output="CNF" />
+        <ECAction Output="LOCAL" />
+      </ECState>
+      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="1980.295" y="616.5894">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="486.88,143.0315,494.2909,159.2707" />
+      </ECTransition>
+      <ECTransition Source="INIT" Destination="INITIAL" Condition="REQ AND LocalRetracted" x="2366.88" y="622.8192">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="570.1505,135.4414,615.5556,141.6667" />
+      </ECTransition>
+      <ECTransition Source="INITIAL" Destination="PUSH_LOCAL" Condition="REQ AND PackInLocal" x="2921.38" y="416.3156">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="682.2222,122.2222,752.7778,55.55556" />
+      </ECTransition>
+      <ECTransition Source="RETR_LOCAL" Destination="INITIAL" Condition="REQ AND LocalRetracted AND (LocalPackOut OR NationalPackOut OR ForeignPackOut)" x="2835.667" y="1194.282">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="701.1111,366.6667,678.3334,252.2222" />
+      </ECTransition>
+      <ECTransition Source="PUSH_LOCAL" Destination="RETR_LOCAL" Condition="REQ AND LocalExtended" x="3725.045" y="803.5556">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="935.0001,166.1111,943.8889,229.4445" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="INIT" Comment="Initialization algorithm">
+      <ST Text="LocalPush:= FALSE;&#xD;&#xA;LocalRetract:= TRUE;" />
+    </Algorithm>
+    <Algorithm Name="INITIAL">
+      <ST Text="LocalRetract:=FALSE;" />
+    </Algorithm>
+    <Algorithm Name="PUSH_L">
+      <ST Text="LocalPush:=TRUE;" />
+    </Algorithm>
+    <Algorithm Name="RETR_L">
+      <ST Text="LocalPush:=FALSE;&#xD;&#xA;LocalRetract:=TRUE;" />
+    </Algorithm>
+  </BasicFB>
+</FBType>

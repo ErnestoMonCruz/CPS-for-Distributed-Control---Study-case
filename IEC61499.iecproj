@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DistributedClasificator" Guid="{ACF48426-A4AD-4E85-AA18-5471ECB73D1D}" Version="1.5.0.0" xmlns="http://www.nxtcontrol.com/IEC61499.xsd">
+  <Folders>
+    <Folder Type="Basic" Name=".Control" />
+    <Folder Type="Basic" Name=".Model" />
+  </Folders>
+  <Archive>
+    <ExcludeDir>
+      <string>Exports</string>
+      <string>Imports</string>
+      <string>Documentation</string>
+    </ExcludeDir>
+  </Archive>
+  <References />
+  <CanvasResolution Name="HMI_ClasificatorSystem" StartCanvasClass="HMI.Main.Canvases.StartCanvas_3" Width="1280" Height="980" WorkAreaWidth="1280" WorkAreaHeight="900" Template="Default">
+    <Topology Name="Default" FirstCanvas="Canvas">
+      <Canvases>
+        <Canvas Name="Canvas" Title="" Tooltip="" Instance="HMI.Main.Canvases.Canvas" />
+      </Canvases>
+    </Topology>
+  </CanvasResolution>
+  <CanvasResolution StartCanvasClass="" Width="-1" Height="-1" WorkAreaWidth="-1" WorkAreaHeight="-1" Template="">
+    <Topology Name="Default" />
+  </CanvasResolution>
+  <Graphics Name="Graphics" />
+  <WebGraphics Name="WebGraphics" />
+  <Security Level="None">
+    <Info xsi:nil="true" />
+  </Security>
+  <PluginGUIDs />
+  <DeployBoxDeviceDeployments>
+    <NetworkProfiles>
+      <NetworkProfile Name="(Local Test)">
+        <Devices>
+          <DeployDevice Name="System.Dev1_PC" />
+          <DeployDevice Name="System.Dev2_DCSmini_1" />
+          <DeployDevice Name="System.Dev3_DCSmini_2" />
+          <DeployDevice Name="System.Dev4_DCSmini_3" />
+        </Devices>
+      </NetworkProfile>
+      <NetworkProfile Name="(Default)">
+        <Devices>
+          <DeployDevice Name="System.Dev1_PC" />
+          <DeployDevice Name="System.Dev2_DCSmini_1" />
+          <DeployDevice Name="System.Dev3_DCSmini_2" />
+          <DeployDevice Name="System.Dev4_DCSmini_3" />
+        </Devices>
+      </NetworkProfile>
+    </NetworkProfiles>
+  </DeployBoxDeviceDeployments>
+</ProjectDatabase>
